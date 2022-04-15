@@ -4,13 +4,16 @@ import {
   PushPinOutlinedIcon,
   AddIcon,
   CloseIcon,
+  LabelIcon,
 } from "../../Icons/Icons";
 import { useState } from "react";
 import { useNoteContext } from "../../context/notes-context";
+import { AddTag } from "../../components";
 
 const EditNote = ({ data }) => {
   const { setNotes } = useNoteContext();
   const [editedData, setEditedData] = useState({ ...data });
+  const [showLabel, setShowLabel] = useState(false);
 
   function updateNote() {
     setNotes((prev) => {
@@ -35,6 +38,15 @@ const EditNote = ({ data }) => {
         }
       });
     });
+  }
+
+  function labelHandler(e) {
+    setEditedData((prev) => ({ ...prev, label: e }));
+    setShowLabel((prev) => !prev);
+  }
+
+  function closeHandler() {
+    setShowLabel((prev) => !prev);
   }
 
   return (
@@ -75,20 +87,23 @@ const EditNote = ({ data }) => {
           value={editedData.note}
         />
       </div>
+      <div className="label-container">
+        {editedData.label ? (
+          <span className="label">
+            {editedData.label}
+            <CloseIcon
+              onClick={() => setEditedData((prev) => ({ ...prev, label: "" }))}
+            />
+          </span>
+        ) : (
+          ""
+        )}
+      </div>
       <div className="note-footer">
-        <select
-          name="label"
-          id="select-label"
-          onChange={(e) =>
-            setEditedData((prev) => ({ ...prev, label: e.target.value }))
-          }
-          value={editedData.label}
-        >
-          <option value="">choose label</option>
-          <option value="HOME">HOME</option>
-          <option value="WORK">WORK</option>
-          <option value="PERSONAL">PERSONAL</option>
-        </select>
+        <LabelIcon
+          sx={{ color: "white" }}
+          onClick={() => setShowLabel((prev) => !prev)}
+        />
 
         <select
           name="color"
@@ -126,6 +141,7 @@ const EditNote = ({ data }) => {
           </button>
         </div>
       </div>
+      {showLabel ? <AddTag handler={labelHandler} close={closeHandler} /> : ""}
     </div>
   );
 };

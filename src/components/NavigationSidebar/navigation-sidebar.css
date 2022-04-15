@@ -26,3 +26,7 @@
 .spaced-list .list-items:hover {
   background-color: var(--list-hover-color);
 }
+
+.active {
+  background-color: #27292f;
+}

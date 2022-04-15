@@ -1,0 +1,39 @@
+.tag-box {
+  position: absolute;
+  top: 16rem;
+  background-color: #27292f;
+  color: white;
+}
+
+.tag-box {
+  border: 1px solid gray;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.tag-box-head {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tag-input {
+  width: 60px;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  outline: none;
+  border: 1px solid gray;
+}
+
+.add-tag-btn {
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 0.5rem;
+}
+
+.tag-box-body {
+  display: flex;
+  flex-direction: column;
+}

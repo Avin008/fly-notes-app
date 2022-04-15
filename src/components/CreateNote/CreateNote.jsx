@@ -4,13 +4,15 @@ import {
   PushPinOutlinedIcon,
   AddIcon,
   CloseIcon,
+  LabelIcon,
 } from "../../Icons/Icons";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import { useNoteContext } from "../../context/notes-context";
-
+import { AddTag } from "../../components";
 const CreateNote = () => {
-  const { notes, setNotes, setShowNote } = useNoteContext();
+  const { setNotes, setShowNote } = useNoteContext();
+  const [showLabel, setShowLabel] = useState(false);
   const [notesData, setNotesData] = useState({
     id: uuid(),
     title: "",
@@ -26,7 +28,14 @@ const CreateNote = () => {
     createdAt: new Date(),
   });
 
-  console.log(notes);
+  function labelHandler(e) {
+    setNotesData((prev) => ({ ...prev, label: e }));
+    setShowLabel((prev) => !prev);
+  }
+
+  function closeHandler() {
+    setShowLabel((prev) => !prev);
+  }
 
   return (
     <div className="create-note" style={{ background: notesData.color }}>
@@ -64,20 +73,24 @@ const CreateNote = () => {
           }
         />
       </div>
-      <div className="note-footer">
-        <select
-          name="label"
-          id="select-label"
-          onChange={(e) =>
-            setNotesData((prev) => ({ ...prev, label: e.target.value }))
-          }
-        >
-          <option value="">choose label</option>
-          <option value="HOME">HOME</option>
-          <option value="WORK">WORK</option>
-          <option value="PERSONAL">PERSONAL</option>
-        </select>
+      <div className="label-container">
+        {notesData.label ? (
+          <span className="label">
+            {notesData.label}
+            <CloseIcon
+              onClick={() => setNotesData((prev) => ({ ...prev, label: "" }))}
+            />
+          </span>
+        ) : (
+          ""
+        )}
+      </div>
 
+      <div className="note-footer">
+        <LabelIcon
+          sx={{ color: "white" }}
+          onClick={() => setShowLabel((prev) => !prev)}
+        />
         <select
           name="color"
           id="select-color"
@@ -120,6 +133,11 @@ const CreateNote = () => {
             <CloseIcon /> Close
           </button>
         </div>
+        {showLabel ? (
+          <AddTag handler={labelHandler} close={closeHandler} />
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
