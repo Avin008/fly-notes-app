@@ -16,7 +16,7 @@
   padding: 0.5rem;
   background-color: transparent;
   border: none;
-  outline: none;
+  outline: 2px solid transparent;
   font-size: 1.3rem;
   color: var(--color-white);
   font-weight: 600;
