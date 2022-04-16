@@ -1,9 +1,8 @@
 # [FlyNotes](https://flynotes.netlify.app/)📝
 Notes App Mini Project Build with REACT
 
-## Live preview Link
-
-https://flynotes.netlify.app/
+## Demo
+https://user-images.githubusercontent.com/32406268/163688446-4efb0972-ab9e-4c77-984d-4ea3358a067c.mp4
 
 ## Tech Stack
 
@@ -53,5 +52,4 @@ Start the server
   - Filter by priorities
   - sort by time/date
 
-## Demo
-https://user-images.githubusercontent.com/32406268/163688446-4efb0972-ab9e-4c77-984d-4ea3358a067c.mp4
+
