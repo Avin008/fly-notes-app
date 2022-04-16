@@ -1,6 +1,6 @@
 .tag-box {
   position: absolute;
-  top: 16rem;
+  top: 17rem;
   background-color: var(--tag-bg-color);
   color: var(--color-white);
 }

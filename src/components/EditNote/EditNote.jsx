@@ -5,15 +5,17 @@ import {
   AddIcon,
   CloseIcon,
   LabelIcon,
+  ColorLensIcon,
 } from "../../Icons/Icons";
 import { useState } from "react";
 import { useNoteContext } from "../../context/notes-context";
-import { AddTag } from "../../components";
+import { AddTag, AddColor } from "../../components";
 
 const EditNote = ({ data }) => {
   const { setNotes } = useNoteContext();
   const [editedData, setEditedData] = useState({ ...data });
   const [showLabel, setShowLabel] = useState(false);
+  const [showColor, setShowColor] = useState(false);
 
   function updateNote() {
     setNotes((prev) => {
@@ -47,6 +49,14 @@ const EditNote = ({ data }) => {
 
   function closeHandler() {
     setShowLabel((prev) => !prev);
+  }
+
+  function showColorHandler() {
+    setShowColor((prev) => !prev);
+  }
+
+  function colorHandler(e) {
+    setEditedData((prev) => ({ ...prev, color: e }));
   }
 
   return (
@@ -105,19 +115,11 @@ const EditNote = ({ data }) => {
           onClick={() => setShowLabel((prev) => !prev)}
         />
 
-        <select
-          name="color"
-          id="select-color"
-          onChange={(e) =>
-            setEditedData((prev) => ({ ...prev, color: e.target.value }))
-          }
-          value={editedData.color}
-        >
-          <option value="">choose color</option>
-          <option value="red">RED</option>
-          <option value="green">GREEN</option>
-          <option value="purple">PURPLE</option>
-        </select>
+        <ColorLensIcon
+          sx={{ color: "white" }}
+          onClick={() => setShowColor((prev) => !prev)}
+        />
+
         <select
           name="priority"
           id="select-priority"
@@ -146,6 +148,15 @@ const EditNote = ({ data }) => {
           handler={labelHandler}
           close={closeHandler}
           color={editedData.color}
+        />
+      ) : (
+        ""
+      )}
+      {showColor ? (
+        <AddColor
+          showColorHandler={showColorHandler}
+          colorHandler={colorHandler}
+          bgColor={editedData.color}
         />
       ) : (
         ""

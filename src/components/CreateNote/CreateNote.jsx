@@ -5,14 +5,18 @@ import {
   AddIcon,
   CloseIcon,
   LabelIcon,
+  ColorLensIcon,
 } from "../../Icons/Icons";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import { useNoteContext } from "../../context/notes-context";
 import { AddTag } from "../../components";
+import { AddColor } from "../../components";
+
 const CreateNote = () => {
   const { setNotes, setShowNote } = useNoteContext();
   const [showLabel, setShowLabel] = useState(false);
+  const [showColor, setShowColor] = useState(false);
   const [notesData, setNotesData] = useState({
     id: uuid(),
     title: "",
@@ -31,6 +35,14 @@ const CreateNote = () => {
   function labelHandler(e) {
     setNotesData((prev) => ({ ...prev, label: e }));
     setShowLabel((prev) => !prev);
+  }
+
+  function showColorHandler() {
+    setShowColor((prev) => !prev);
+  }
+
+  function colorHandler(e) {
+    setNotesData((prev) => ({ ...prev, color: e }));
   }
 
   function closeHandler() {
@@ -91,18 +103,7 @@ const CreateNote = () => {
           sx={{ color: "white" }}
           onClick={() => setShowLabel((prev) => !prev)}
         />
-        <select
-          name="color"
-          id="select-color"
-          onChange={(e) =>
-            setNotesData((prev) => ({ ...prev, color: e.target.value }))
-          }
-        >
-          <option value="">choose color</option>
-          <option value="red">RED</option>
-          <option value="green">GREEN</option>
-          <option value="purple">PURPLE</option>
-        </select>
+        <ColorLensIcon sx={{ color: "white" }} onClick={showColorHandler} />
         <select
           name="priority"
           id="select-priority"
@@ -138,6 +139,15 @@ const CreateNote = () => {
             handler={labelHandler}
             close={closeHandler}
             color={notesData.color}
+          />
+        ) : (
+          ""
+        )}
+        {showColor ? (
+          <AddColor
+            showColorHandler={showColorHandler}
+            colorHandler={colorHandler}
+            bgColor={notesData.color}
           />
         ) : (
           ""
