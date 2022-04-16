@@ -23,12 +23,12 @@
   width: 60px;
   padding: 0.2rem 0.5rem;
   border-radius: 0.5rem;
-  outline: none;
+  outline: 2px solid transparent;
   border: 1px solid var(--color-gray);
 }
 
 .add-tag-btn {
-  outline: none;
+  outline: 2px solid transparent;
   border: 1px solid var(--color-gray);
   border-radius: 0.5rem;
 }

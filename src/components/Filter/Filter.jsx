@@ -4,7 +4,7 @@ import { useNoteContext } from "../../context/notes-context";
 const Filter = () => {
   const { filteredNotes, filteredNotesDispatch } = useFilterContext();
   const { notes } = useNoteContext();
-  const labels = notes.map((x) => x.label).filter((x) => x);
+  const labels = notes.map((note) => note.label).filter((label) => label);
 
   return (
     <div className="App">
