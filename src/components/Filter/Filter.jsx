@@ -5,6 +5,7 @@ const Filter = () => {
   const { filteredNotes, filteredNotesDispatch } = useFilterContext();
   const { notes } = useNoteContext();
   const labels = notes.map((note) => note.label).filter((label) => label);
+  const removeduplicateLabels = [...new Set(labels)];
 
   return (
     <div className="App">
@@ -45,7 +46,7 @@ const Filter = () => {
             <option value="LOW">LOW</option>
           </select>
           <h5>Select Labels</h5>
-          {labels.map((x) => {
+          {removeduplicateLabels.map((x) => {
             return (
               <>
                 <label>
