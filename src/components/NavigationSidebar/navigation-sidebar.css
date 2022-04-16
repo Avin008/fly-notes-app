@@ -1,17 +1,10 @@
-:root {
-  --color-white: white;
-  --color-gray: gray;
-  --color-black: black;
-  --list-hover-color: #4c4c4c;
-}
 .spaced-list {
   background-color: transparent;
   color: var(--color-white);
   border-right: 1px solid var(--color-gray);
   border-bottom: 1px solid var(--color-gray);
-  height: 90vh;
+  height: fit-content;
   margin-top: 2.9rem;
-  border-bottom-right-radius: 1rem;
 }
 
 .spaced-list .list-items {
@@ -25,4 +18,8 @@
 
 .spaced-list .list-items:hover {
   background-color: var(--list-hover-color);
+}
+
+.active {
+  background-color: #27292f;
 }

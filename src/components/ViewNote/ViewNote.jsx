@@ -6,6 +6,8 @@ import {
   DeleteIcon,
   EditIcon,
   DeleteForeverIcon,
+  UnarchiveIcon,
+  RestoreFromTrashIcon,
 } from "../../Icons/Icons";
 import { useNoteContext } from "../../context/notes-context";
 import { EditNote } from "../../components";
@@ -78,7 +80,9 @@ const ViewNote = ({ data }) => {
     <>
       <div className="view-note" style={{ background: data.color }}>
         <div className="note-head">
-          <h4 className="note-heading">{data.title}</h4>
+          <h4 className="note-heading">
+            {data.title ? data.title : "Untitled"}
+          </h4>
           {data.isPinned ? (
             <PushPinIcon
               sx={{ color: "white" }}
@@ -92,7 +96,7 @@ const ViewNote = ({ data }) => {
           )}
         </div>
         <div className="note-body">
-          <p className="note-text">{data.note}</p>
+          <p className="note-text">{data.note ? data.note : "Empty Note"}</p>
         </div>
         <div className="note-footer">
           <div className="tag-container">
@@ -113,14 +117,28 @@ const ViewNote = ({ data }) => {
               sx={{ color: "white" }}
               onClick={() => editHandler(data)}
             />
-            <ArchiveIcon
-              sx={{ color: "white" }}
-              onClick={() => archiveHandler(data)}
-            />
-            <DeleteIcon
-              sx={{ color: "white" }}
-              onClick={() => deleteHandler(data)}
-            />
+            {data.isArchived ? (
+              <UnarchiveIcon
+                sx={{ color: "white" }}
+                onClick={() => archiveHandler(data)}
+              />
+            ) : (
+              <ArchiveIcon
+                sx={{ color: "white" }}
+                onClick={() => archiveHandler(data)}
+              />
+            )}
+            {data.isTrashed ? (
+              <RestoreFromTrashIcon
+                sx={{ color: "white" }}
+                onClick={() => deleteHandler(data)}
+              />
+            ) : (
+              <DeleteIcon
+                sx={{ color: "white" }}
+                onClick={() => deleteHandler(data)}
+              />
+            )}
             {data.isTrashed ? (
               <DeleteForeverIcon
                 sx={{ color: "white" }}

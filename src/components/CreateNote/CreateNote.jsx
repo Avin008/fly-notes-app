@@ -4,13 +4,19 @@ import {
   PushPinOutlinedIcon,
   AddIcon,
   CloseIcon,
+  LabelIcon,
+  ColorLensIcon,
 } from "../../Icons/Icons";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import { useNoteContext } from "../../context/notes-context";
+import { AddTag } from "../../components";
+import { AddColor } from "../../components";
 
 const CreateNote = () => {
-  const { notes, setNotes, setShowNote } = useNoteContext();
+  const { setNotes, setShowNote } = useNoteContext();
+  const [showLabel, setShowLabel] = useState(false);
+  const [showColor, setShowColor] = useState(false);
   const [notesData, setNotesData] = useState({
     id: uuid(),
     title: "",
@@ -26,7 +32,22 @@ const CreateNote = () => {
     createdAt: new Date(),
   });
 
-  console.log(notes);
+  function labelHandler(e) {
+    setNotesData((prev) => ({ ...prev, label: e }));
+    setShowLabel((prev) => !prev);
+  }
+
+  function showColorHandler() {
+    setShowColor((prev) => !prev);
+  }
+
+  function colorHandler(e) {
+    setNotesData((prev) => ({ ...prev, color: e }));
+  }
+
+  function closeHandler() {
+    setShowLabel((prev) => !prev);
+  }
 
   return (
     <div className="create-note" style={{ background: notesData.color }}>
@@ -64,32 +85,25 @@ const CreateNote = () => {
           }
         />
       </div>
-      <div className="note-footer">
-        <select
-          name="label"
-          id="select-label"
-          onChange={(e) =>
-            setNotesData((prev) => ({ ...prev, label: e.target.value }))
-          }
-        >
-          <option value="">choose label</option>
-          <option value="HOME">HOME</option>
-          <option value="WORK">WORK</option>
-          <option value="PERSONAL">PERSONAL</option>
-        </select>
+      <div className="label-container">
+        {notesData.label ? (
+          <span className="label">
+            {notesData.label}
+            <CloseIcon
+              onClick={() => setNotesData((prev) => ({ ...prev, label: "" }))}
+            />
+          </span>
+        ) : (
+          ""
+        )}
+      </div>
 
-        <select
-          name="color"
-          id="select-color"
-          onChange={(e) =>
-            setNotesData((prev) => ({ ...prev, color: e.target.value }))
-          }
-        >
-          <option value="">choose color</option>
-          <option value="red">RED</option>
-          <option value="green">GREEN</option>
-          <option value="purple">PURPLE</option>
-        </select>
+      <div className="note-footer">
+        <LabelIcon
+          sx={{ color: "white" }}
+          onClick={() => setShowLabel((prev) => !prev)}
+        />
+        <ColorLensIcon sx={{ color: "white" }} onClick={showColorHandler} />
         <select
           name="priority"
           id="select-priority"
@@ -120,6 +134,24 @@ const CreateNote = () => {
             <CloseIcon /> Close
           </button>
         </div>
+        {showLabel ? (
+          <AddTag
+            handler={labelHandler}
+            close={closeHandler}
+            color={notesData.color}
+          />
+        ) : (
+          ""
+        )}
+        {showColor ? (
+          <AddColor
+            showColorHandler={showColorHandler}
+            colorHandler={colorHandler}
+            bgColor={notesData.color}
+          />
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

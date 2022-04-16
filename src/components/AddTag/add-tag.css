@@ -1,0 +1,39 @@
+.tag-box {
+  position: absolute;
+  top: 17rem;
+  background-color: var(--tag-bg-color);
+  color: var(--color-white);
+}
+
+.tag-box {
+  border: 1px solid var(--color-gray);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.tag-box-head {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tag-input {
+  width: 60px;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  outline: 2px solid transparent;
+  border: 1px solid var(--color-gray);
+}
+
+.add-tag-btn {
+  outline: 2px solid transparent;
+  border: 1px solid var(--color-gray);
+  border-radius: 0.5rem;
+}
+
+.tag-box-body {
+  display: flex;
+  flex-direction: column;
+}

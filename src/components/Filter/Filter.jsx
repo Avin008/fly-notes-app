@@ -1,7 +1,11 @@
 import "./filter.css";
 import { useFilterContext } from "../../context/filter-context";
+import { useNoteContext } from "../../context/notes-context";
 const Filter = () => {
   const { filteredNotes, filteredNotesDispatch } = useFilterContext();
+  const { notes } = useNoteContext();
+  const labels = notes.map((note) => note.label).filter((label) => label);
+
   return (
     <div className="App">
       <div className="filter">
@@ -18,7 +22,8 @@ const Filter = () => {
             }
             value={filteredNotes.sortBy}
           >
-            <option value="">choose time</option>
+            <option value="">Choose Time</option>
+
             <option value="NEW">Newest First</option>
             <option value="OLD">Oldest First</option>
           </select>
@@ -40,45 +45,25 @@ const Filter = () => {
             <option value="LOW">LOW</option>
           </select>
           <h5>Select Labels</h5>
-          <label>
-            <input
-              type="checkbox"
-              checked={filteredNotes.labels.includes("HOME")}
-              onChange={() =>
-                filteredNotesDispatch({
-                  type: "LABELS",
-                  payload: "HOME",
-                })
-              }
-            />
-            Home
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              checked={filteredNotes.labels.includes("WORK")}
-              onChange={() =>
-                filteredNotesDispatch({
-                  type: "LABELS",
-                  payload: "WORK",
-                })
-              }
-            />
-            Work
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              checked={filteredNotes.labels.includes("PERSONAL")}
-              onChange={() =>
-                filteredNotesDispatch({
-                  type: "LABELS",
-                  payload: "PERSONAL",
-                })
-              }
-            />{" "}
-            Personal
-          </label>
+          {labels.map((x) => {
+            return (
+              <>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={filteredNotes.labels.includes(x)}
+                    onChange={() =>
+                      filteredNotesDispatch({
+                        type: "LABELS",
+                        payload: x,
+                      })
+                    }
+                  />
+                  {x}
+                </label>
+              </>
+            );
+          })}
         </div>
         <div className="filter-footer">
           <button
