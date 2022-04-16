@@ -23,19 +23,19 @@ https://flynotes.netlify.app/
 Clone the project
 
 ```js
-  git clone https://github.com/t007rushi/Monkeep.git
+  git clone https://github.com/Avin008/fly-notes.git
 ```
 
 Go to the project directory
 
 ```js
-  cd monkeep
+  cd fly-notes
 ```
 
 Install dependencies
 
 ```js
-  npm install
+  npm i
 ```
 
 Start the server
