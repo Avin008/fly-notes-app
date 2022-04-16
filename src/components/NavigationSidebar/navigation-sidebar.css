@@ -1,0 +1,28 @@
+:root {
+  --color-white: white;
+  --color-gray: gray;
+  --color-black: black;
+  --list-hover-color: #4c4c4c;
+}
+.spaced-list {
+  background-color: transparent;
+  color: var(--color-white);
+  border-right: 1px solid var(--color-gray);
+  border-bottom: 1px solid var(--color-gray);
+  height: 90vh;
+  margin-top: 2.9rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.spaced-list .list-items {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--color-white);
+}
+
+.spaced-list .list-items:hover {
+  background-color: var(--list-hover-color);
+}

@@ -1,0 +1,41 @@
+:root {
+  --nav-bg-color: #202124;
+  --color-black: black;
+  --color-gray: gray;
+  --color-white: white;
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  background-color: var(--nav-bg-color);
+  color: var(--color-white);
+  align-items: center;
+  justify-items: center;
+  border-bottom: 1px solid var(--color-gray);
+  position: fixed;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.search-bar-container {
+  display: flex;
+  width: 100%;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: transparent;
+  outline: none;
+  border: 1px solid var(--color-gray);
+  color: var(--color-white);
+  border-radius: 0.5rem;
+}
+
+.brand-name {
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
