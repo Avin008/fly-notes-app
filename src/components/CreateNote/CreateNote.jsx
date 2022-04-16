@@ -134,7 +134,11 @@ const CreateNote = () => {
           </button>
         </div>
         {showLabel ? (
-          <AddTag handler={labelHandler} close={closeHandler} />
+          <AddTag
+            handler={labelHandler}
+            close={closeHandler}
+            color={notesData.color}
+          />
         ) : (
           ""
         )}

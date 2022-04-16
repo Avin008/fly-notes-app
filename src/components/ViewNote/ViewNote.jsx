@@ -6,6 +6,8 @@ import {
   DeleteIcon,
   EditIcon,
   DeleteForeverIcon,
+  UnarchiveIcon,
+  RestoreFromTrashIcon,
 } from "../../Icons/Icons";
 import { useNoteContext } from "../../context/notes-context";
 import { EditNote } from "../../components";
@@ -115,14 +117,28 @@ const ViewNote = ({ data }) => {
               sx={{ color: "white" }}
               onClick={() => editHandler(data)}
             />
-            <ArchiveIcon
-              sx={{ color: "white" }}
-              onClick={() => archiveHandler(data)}
-            />
-            <DeleteIcon
-              sx={{ color: "white" }}
-              onClick={() => deleteHandler(data)}
-            />
+            {data.isArchived ? (
+              <UnarchiveIcon
+                sx={{ color: "white" }}
+                onClick={() => archiveHandler(data)}
+              />
+            ) : (
+              <ArchiveIcon
+                sx={{ color: "white" }}
+                onClick={() => archiveHandler(data)}
+              />
+            )}
+            {data.isTrashed ? (
+              <RestoreFromTrashIcon
+                sx={{ color: "white" }}
+                onClick={() => deleteHandler(data)}
+              />
+            ) : (
+              <DeleteIcon
+                sx={{ color: "white" }}
+                onClick={() => deleteHandler(data)}
+              />
+            )}
             {data.isTrashed ? (
               <DeleteForeverIcon
                 sx={{ color: "white" }}

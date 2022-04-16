@@ -22,6 +22,8 @@ const Filter = () => {
             }
             value={filteredNotes.sortBy}
           >
+            <option value="">Choose Time</option>
+
             <option value="NEW">Newest First</option>
             <option value="OLD">Oldest First</option>
           </select>

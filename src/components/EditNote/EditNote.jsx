@@ -141,7 +141,15 @@ const EditNote = ({ data }) => {
           </button>
         </div>
       </div>
-      {showLabel ? <AddTag handler={labelHandler} close={closeHandler} /> : ""}
+      {showLabel ? (
+        <AddTag
+          handler={labelHandler}
+          close={closeHandler}
+          color={editedData.color}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 };

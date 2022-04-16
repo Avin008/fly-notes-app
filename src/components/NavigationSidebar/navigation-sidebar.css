@@ -1,9 +1,3 @@
-:root {
-  --color-white: white;
-  --color-gray: gray;
-  --color-black: black;
-  --list-hover-color: #4c4c4c;
-}
 .spaced-list {
   background-color: transparent;
   color: var(--color-white);

@@ -2,6 +2,7 @@ import "./home.css";
 import { CreateNote, ViewNote } from "../../components";
 import { useNoteContext } from "../../context/notes-context";
 import { useFilterContext } from "../../context/filter-context";
+import { useEffect } from "react";
 const Home = () => {
   const { showNote, setShowNote, notes } = useNoteContext();
   const { filteredNotes } = useFilterContext();
@@ -52,6 +53,10 @@ const Home = () => {
   const notPinnedNotes = filteredNotesByDate.filter(
     (x) => !x.isPinned && !x.isArchived && !x.isTrashed
   );
+
+  useEffect(() => {
+    document.title = "Home | Fly Notes";
+  }, []);
 
   return (
     <div className="main-container">

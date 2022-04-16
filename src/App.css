@@ -1,3 +1,18 @@
+:root {
+  --tag-bg-color: #27292f;
+  --primary-color: transparent;
+  --secondary-color: #ffffff;
+  --color-black: #000000;
+  --color-gray: #808080;
+  --note-bg-color: #27292f;
+  --color-white: #ffffff;
+  --note-bg-color: #27292f;
+  --filter-bg-color: #202124;
+  --filter-btn-bg-color: #202124;
+  --nav-bg-color: #202124;
+  --list-hover-color: #4d4d4d;
+}
+
 .main-view {
   display: grid;
   grid-template-columns: 210px 1fr;

@@ -12,6 +12,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import UnarchiveIcon from "@mui/icons-material/Unarchive";
+import RestoreFromTrashIcon from "@mui/icons-material/RestoreFromTrash";
 
 export {
   PushPinIcon,
@@ -28,4 +30,6 @@ export {
   EditIcon,
   DeleteForeverIcon,
   AddCircleIcon,
+  UnarchiveIcon,
+  RestoreFromTrashIcon,
 };

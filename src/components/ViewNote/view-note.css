@@ -1,10 +1,3 @@
-:root {
-  --primary-color: transparent;
-  --secondary-color: #ffffff;
-  --color-black: #000000;
-  --color-gray: #808080;
-}
-
 .view-note {
   border: 1px solid var(--color-gray);
   min-width: 25rem;
