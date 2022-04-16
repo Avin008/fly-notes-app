@@ -41,12 +41,12 @@ Install dependencies
 Start the server
 
 ```js
-  npm run start
+  npm start
 ```
 
 ## Functionalities
 
-- CRUD operations on Note
+- Create, Edit, Pin, Delete, Archive Notes
 - Add label, priorites, color to a Note
 - Filtering and Sorting
   - Filter by labels/tags
@@ -54,4 +54,4 @@ Start the server
   - sort by time/date
 
 ## Demo
-
+https://user-images.githubusercontent.com/32406268/163688446-4efb0972-ab9e-4c77-984d-4ea3358a067c.mp4
