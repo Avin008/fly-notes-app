@@ -55,6 +55,3 @@ Start the server
 
 ## Demo
 
-## Author
-
-- [@Avin008](https://github.com/Avin008/fly-notes-app)
